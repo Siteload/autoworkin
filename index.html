@@ -8,16 +8,31 @@
     <script>
         // Function to check and redirect
         function checkAndRedirect() {
-            // Get the current URL
-            var currentUrl = window.location.href;
+            // Check if the page is loaded in an iframe or frame
+            if (window.frameElement) {
+                // Get the parent frame's URL
+                var parentUrl = window.parent.location.href;
 
-            // Check if the current URL is about:blank
-            if (currentUrl.toLowerCase() === 'about:blank') {
-                // Redirect to the specified URL
-                window.location.href = 'https://www.myturtle.net/?__cpo=1';
+                // Check if the parent frame's URL is about:blank
+                if (parentUrl.toLowerCase() === 'about:blank') {
+                    // Redirect to the specified URL
+                    window.parent.location.href = 'https://www.myturtle.net/?__cpo=1';
+                } else {
+                    // Display a message if the parent frame's URL is not about:blank
+                    alert('The parent frame\'s URL is not about:blank.');
+                }
             } else {
-                // Display a message if not about:blank
-                alert('The current URL is not about:blank.');
+                // Get the current URL if not in an iframe or frame
+                var currentUrl = window.location.href;
+
+                // Check if the current URL is about:blank
+                if (currentUrl.toLowerCase() === 'about:blank') {
+                    // Redirect to the specified URL
+                    window.location.href = 'https://www.myturtle.net/?__cpo=1';
+                } else {
+                    // Display a message if not about:blank
+                    alert('The current URL is not about:blank.');
+                }
             }
         }
 
