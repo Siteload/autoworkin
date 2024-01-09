@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Check and Redirect</title>
+    <script>
+        // Function to check and redirect
+        function checkAndRedirect() {
+            // Get the current URL
+            var currentUrl = window.location.href;
+
+            // Check if the current URL is about:blank
+            if (currentUrl.toLowerCase() === 'about:blank') {
+                // Redirect to the specified URL
+                window.location.href = 'https://www.myturtle.net/?__cpo=1';
+            } else {
+                // Display a message if not about:blank
+                alert('The current URL is not about:blank.');
+            }
+        }
+
+        // Call the function when the page loads
+        window.onload = checkAndRedirect;
+    </script>
+</head>
+<body>
+    <!-- Your HTML content goes here -->
+    <h1>Checking and Redirecting</h1>
+</body>
+</html>
